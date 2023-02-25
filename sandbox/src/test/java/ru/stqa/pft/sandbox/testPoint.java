@@ -19,7 +19,6 @@ public class testPoint {
         Point P1 = new Point(0,0);
         Point P2 = new Point(0,0);
         Assert.assertEquals(P1.distance(P2),0);
-        Assert.assertTrue(P1.distance(P2) > 1);
     }
 
     public void DistanceTest3() {
