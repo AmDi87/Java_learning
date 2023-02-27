@@ -14,11 +14,9 @@ public class GroupData {
     public String getGroupName() {
         return groupName;
     }
-
     public String getGroupHeader() {
         return groupHeader;
     }
-
     public String getGroupFooter() {
         return groupFooter;
     }
