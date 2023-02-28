@@ -1,6 +1,11 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactIDataInfoContact {
+    private final String firstName;
+    private final String middleName;
+    private final String lastName;
+    private final String nickName;
+
     private final String title;
     private final String company;
     private final String address;
@@ -18,13 +23,31 @@ public class ContactIDataInfoContact {
 
     private final String newGroup;
 
-    public ContactIDataInfoContact(String title, String company, String address,
+    private final String aday;
+    private final String amonth;
+    private final String ayear;
+
+    private final String bday;
+    private final String bmonth;
+    private final String byear;
+
+    private final String address2;
+    private final String phone2;
+    private final String notes;
+
+    public ContactIDataInfoContact(String firstName, String middleName, String lastName, String nickName,
+                                   String title, String company, String address,
                                    String homeTelephone, String mobileTelephone, String workTelephone, String faxTelephone,
                                    String email1, String email2, String email3,
+                                   String bday, String bmonth, String byear, String aday, String amonth, String ayear,
                                    String homepage,
-                                   String newGroup ) {
+                                   String newGroup,
+                                   String address2, String phone2, String notes) {
 
-
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.nickName = nickName;
 
         this.title = title;
         this.company = company;
@@ -42,6 +65,29 @@ public class ContactIDataInfoContact {
         this.homepage = homepage;
 
         this.newGroup = newGroup;
+
+        this.aday = aday;
+        this.amonth = amonth;
+        this.ayear = ayear;
+
+        this.bday = bday;
+        this.bmonth = bmonth;
+        this.byear = byear;
+
+        this.address2 = address2;
+        this.phone2 = phone2;
+        this.notes = notes;
+    }
+
+    public String getFirstName() {return firstName; }
+    public String getMiddleName() {
+        return middleName;
+    }
+    public String getLastName() {
+        return lastName;
+    }
+    public String getNickName() {
+        return nickName;
     }
 
     public String getTitle() {
@@ -81,6 +127,36 @@ public class ContactIDataInfoContact {
 
     public String getNewGroup() {
         return newGroup;
+    }
+
+    public String getAday() {
+        return aday;
+    }
+    public String getAmonth() {
+        return amonth;
+    }
+    public String getAyear() {
+        return ayear;
+    }
+
+    public String getBday() {
+        return bday;
+    }
+    public String getBmonth() {
+        return bmonth;
+    }
+    public String getByear() {
+        return byear;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+    public String getPhone2() {
+        return phone2;
+    }
+    public String getNotes() {
+        return notes;
     }
 }
 
