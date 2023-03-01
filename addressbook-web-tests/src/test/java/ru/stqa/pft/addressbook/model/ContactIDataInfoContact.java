@@ -103,8 +103,7 @@ public class ContactIDataInfoContact {
     public String getHomeTelephone() {
         return homeTelephone;
     }
-    public String getMobileTelephone() {
-        return mobileTelephone;
+    public String getMobileTelephone() {return mobileTelephone;
     }
     public String getWorkTelephone() {
         return workTelephone;
