@@ -11,7 +11,6 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    //contactCreated
     public void fillDownloadJpg() {
         type1 (By.name("photo"),"H:\\GIT\\123.jpg");
     }
@@ -42,37 +41,50 @@ public class ContactHelper extends HelperBase {
         selectByVisible(By.name("bday"),сontactInfoContact.getBday());
         selectByVisible(By.name("bmonth"),сontactInfoContact.getBmonth());
 
-        //wd.findElement(By.name("bday")).click();
-        //new Select(wd.findElement(By.name("bday"))).selectByVisibleText(сontactInfoContact.getBday());
-        //wd.findElement(By.name("bmonth")).click();
-        //new Select(wd.findElement(By.name("bmonth"))).selectByVisibleText(сontactInfoContact.getBmonth());
-
         type(By.name("byear"),сontactInfoContact.getByear());
 
         selectByVisible(By.name("aday"),сontactInfoContact.getAday());
         selectByVisible(By.name("amonth"),сontactInfoContact.getAmonth());
 
-        //wd.findElement(By.name("aday")).click();
-        //new Select(wd.findElement(By.name("aday"))).selectByVisibleText(сontactInfoContact.getAday());
-        //wd.findElement(By.name("amonth")).click();
-        //new Select(wd.findElement(By.name("amonth"))).selectByVisibleText(сontactInfoContact.getAmonth());
-
         type(By.name("ayear"),сontactInfoContact.getAyear());
 
         type(By.name("homepage"),сontactInfoContact.getHomepage());
 
-        selectByVisible(By.name("new_group"),сontactInfoContact.getNewGroup());
+        if(сontactInfoContact.getNewGroup() != null)
+       // var test = wd.findElement(By.name("new_group")).isDisplayed();
+        // if(wd.findElement(By.name("new_group")).isDisplayed())
+                selectByVisible(By.name("new_group"),сontactInfoContact.getNewGroup());
 
-        //wd.findElement(By.name("new_group")).click();
-        //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(сontactInfoContact.getNewGroup());
 
         type(By.name("address2"),сontactInfoContact.getAddress2());
         type(By.name("phone2"),сontactInfoContact.getPhone2());
         type(By.name("notes"),сontactInfoContact.getNotes());
-
     }
 
     public void returnToHomePage() {
         click(By.linkText("home page"));
+    }
+
+    public void editContact() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+    public void updateContact(){
+        click(By.xpath("//input[@name='update']"));
+    }
+
+    public void selectContact() {
+        click(By.xpath("//td/input"));
+    }
+
+    public void submitDeleted() {
+        click(By.xpath("//input[@value='Delete']"));
+    }
+
+    public void okAlert() {
+        Alert();
+    }
+
+    public void gotoHome() {
+        click(By.linkText("home"));
     }
 }

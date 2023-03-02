@@ -6,6 +6,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.lang.invoke.SwitchPoint;
+
 public class HelperBase {
     protected WebDriver wd;
 
@@ -15,6 +17,10 @@ public class HelperBase {
 
     protected void click(By locator) {
         wd.findElement(locator).click();
+    }
+
+    protected void Alert(){
+        wd.switchTo().alert().accept();
     }
 
     protected void type(By locator, String text) {
