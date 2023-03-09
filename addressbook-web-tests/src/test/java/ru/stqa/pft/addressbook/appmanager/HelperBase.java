@@ -26,8 +26,11 @@ public class HelperBase {
     protected void type(By locator, String text) {
         click(locator);
         if (text != null) {
-            wd.findElement(locator).clear();
-            wd.findElement(locator).sendKeys(text);
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (!text.equals(existingText)) {
+                wd.findElement(locator).clear();
+                wd.findElement(locator).sendKeys(text);
+            }
         }
     }
     protected void type1(By locator, String text) {
@@ -37,8 +40,11 @@ public class HelperBase {
     protected void selectByVisible(By locator, String text) {
         click(locator);
         if (text != null) {
-            Select sbv = new Select(wd.findElement(locator));
-            sbv.selectByVisibleText(text);
+            String existingText = wd.findElement(locator).getAttribute("value");
+            if (!text.equals(existingText)) {
+                Select sbv = new Select(wd.findElement(locator));
+                sbv.selectByVisibleText(text);
+            }
         }
     }
 
