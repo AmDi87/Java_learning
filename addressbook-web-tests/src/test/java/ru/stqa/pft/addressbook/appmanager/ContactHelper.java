@@ -2,9 +2,8 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
-import ru.stqa.pft.addressbook.model.ContactIData;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
 
@@ -20,7 +19,7 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form/input[21]"));
     }
 
-    public void fillInfoContact(ContactIData сontactInfoContact, boolean creation) {
+    public void fillInfoContact(ContactData сontactInfoContact, boolean creation) {
         type(By.name("firstname"),сontactInfoContact.getFirstName());
         type(By.name("middlename"),сontactInfoContact.getMiddleName());
         type(By.name("lastname"),сontactInfoContact.getLastName());
@@ -51,12 +50,6 @@ public class ContactHelper extends HelperBase {
 
         type(By.name("homepage"),сontactInfoContact.getHomepage());
 
-        //if(сontactInfoContact.getNewGroup() != null)
-
-       /*if (isElementPresent(By.name("new_group")))
-        {
-
-        }*/
         if (creation)
         {
             selectByVisible(By.name("new_group"),сontactInfoContact.getGroup());
@@ -91,5 +84,22 @@ public class ContactHelper extends HelperBase {
 
     public void okAlert() {
         Alert();
+    }
+
+    public void gotoContactNew() {
+
+        click(By.linkText("add new"));
+    }
+
+    public void createContact(ContactData contact, boolean creation) {
+        gotoContactNew();
+        fillInfoContact(contact,creation);
+        fillDownloadJpg();
+        submitContactCreated();
+        returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//td/input"));
     }
 }
