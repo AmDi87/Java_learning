@@ -92,8 +92,4 @@ public class ContactHelper extends HelperBase {
     public void okAlert() {
         Alert();
     }
-
-    public void gotoHome() {
-        click(By.linkText("home"));
-    }
 }

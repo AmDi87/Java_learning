@@ -10,6 +10,7 @@ public class GroupDeletedTest extends TestBase {
         app.getGroupHelper().selectGroup();
         app.getGroupHelper().deleteGroup();
         app.getGroupHelper().returnToGroupPage();
+        app.getNavigationHelper().gotoHomePage();
         app.getSessionHelper().logoutAccount();
     }
 

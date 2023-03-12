@@ -22,6 +22,7 @@ public class ContactCreatedTest extends TestBase {
         app.getContactHelper().fillDownloadJpg();
         app.getContactHelper().submitContactCreated();
         app.getContactHelper().returnToHomePage();
+        app.getNavigationHelper().gotoHomePage();
         app.getSessionHelper().logoutAccount();
     }
 }
