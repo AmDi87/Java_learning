@@ -1,6 +1,8 @@
 package ru.stqa.pft.addressbook.model;
 
-public class ContactIDataInfoContact {
+public class ContactIData {
+
+    private static String group;
     private final String firstName;
     private final String middleName;
     private final String lastName;
@@ -21,7 +23,7 @@ public class ContactIDataInfoContact {
 
     private final String homepage;
 
-    private String newGroup;
+    //private String group;
 
     private final String aday;
     private final String amonth;
@@ -35,14 +37,14 @@ public class ContactIDataInfoContact {
     private final String phone2;
     private final String notes;
 
-    public ContactIDataInfoContact(String firstName, String middleName, String lastName, String nickName,
-                                   String title, String company, String address,
-                                   String homeTelephone, String mobileTelephone, String workTelephone, String faxTelephone,
-                                   String email1, String email2, String email3,
-                                   String bday, String bmonth, String byear, String aday, String amonth, String ayear,
-                                   String homepage,
-                                   String newGroup,
-                                   String address2, String phone2, String notes) {
+    public ContactIData(String firstName, String middleName, String lastName, String nickName,
+                        String title, String company, String address,
+                        String homeTelephone, String mobileTelephone, String workTelephone, String faxTelephone,
+                        String email1, String email2, String email3,
+                        String bday, String bmonth, String byear, String aday, String amonth, String ayear,
+                        String homepage,
+                        String group,
+                        String address2, String phone2, String notes) {
 
         this.firstName = firstName;
         this.middleName = middleName;
@@ -64,7 +66,7 @@ public class ContactIDataInfoContact {
 
         this.homepage = homepage;
 
-        this.newGroup = newGroup;
+        this.group = group;
 
         this.aday = aday;
         this.amonth = amonth;
@@ -79,54 +81,18 @@ public class ContactIDataInfoContact {
         this.notes = notes;
     }
 
-    public ContactIDataInfoContact(String firstName, String middleName, String lastName, String nickName,
-                                   String title, String company, String address,
-                                   String homeTelephone, String mobileTelephone, String workTelephone, String faxTelephone,
-                                   String email1, String email2, String email3,
-                                   String bday, String bmonth, String byear, String aday, String amonth, String ayear,
-                                   String homepage,
-                                   String address2, String phone2, String notes) {
-
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.nickName = nickName;
-
-        this.title = title;
-        this.company = company;
-        this.address = address;
-
-        this.homeTelephone = homeTelephone;
-        this.mobileTelephone = mobileTelephone;
-        this.workTelephone = workTelephone;
-        this.faxTelephone = faxTelephone;
-
-        this.email1 = email1;
-        this.email2 = email2;
-        this.email3 = email3;
-
-        this.homepage = homepage;
-
-        this.aday = aday;
-        this.amonth = amonth;
-        this.ayear = ayear;
-
-        this.bday = bday;
-        this.bmonth = bmonth;
-        this.byear = byear;
-
-        this.address2 = address2;
-        this.phone2 = phone2;
-        this.notes = notes;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getFirstName() {return firstName; }
     public String getMiddleName() {
         return middleName;
     }
+
     public String getLastName() {
         return lastName;
     }
+
     public String getNickName() {
         return nickName;
     }
@@ -144,11 +110,14 @@ public class ContactIDataInfoContact {
     public String getHomeTelephone() {
         return homeTelephone;
     }
+
     public String getMobileTelephone() {return mobileTelephone;
     }
+
     public String getWorkTelephone() {
         return workTelephone;
     }
+
     public String getFaxTelephone() {
         return faxTelephone;
     }
@@ -163,10 +132,6 @@ public class ContactIDataInfoContact {
 
     public String getHomepage() {
         return homepage;
-    }
-
-    public String getNewGroup() {
-        return newGroup;
     }
 
     public String getAday() {
@@ -197,6 +162,10 @@ public class ContactIDataInfoContact {
     }
     public String getNotes() {
         return notes;
+    }
+
+    public static String getGroup() {
+        return group;
     }
 }
 

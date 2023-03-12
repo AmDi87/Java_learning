@@ -8,7 +8,7 @@ public class ContactCreatedTest extends TestBase {
     @Test
     public void testContactCreated() throws Exception {
         app.getNavigationHelper().gotoContactNew();
-        app.getContactHelper().fillInfoContact(new ContactIDataInfoContact(
+        app.getContactHelper().fillInfoContact(new ContactIData(
                 "John", "Vlad", "Doe", "Nick",
                 "title", "Company", "address",
                 "89002000600", "88002000600", "87002000600", "86002000600",
@@ -17,7 +17,8 @@ public class ContactCreatedTest extends TestBase {
                 "30", "January", "1990",
                 "homepage",
                 "[none]",
-                "addressSecondary", "homeSecondary", "notesSecondary"));
+                "addressSecondary", "homeSecondary", "notesSecondary"),
+                true);
         app.getContactHelper().fillDownloadJpg();
         app.getContactHelper().submitContactCreated();
         app.getContactHelper().returnToHomePage();
