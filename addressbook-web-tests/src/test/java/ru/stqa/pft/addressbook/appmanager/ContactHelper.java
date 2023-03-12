@@ -98,8 +98,4 @@ public class ContactHelper extends HelperBase {
         submitContactCreated();
         returnToHomePage();
     }
-
-    public boolean isThereAContact() {
-        return isElementPresent(By.xpath("//td/input"));
-    }
 }
