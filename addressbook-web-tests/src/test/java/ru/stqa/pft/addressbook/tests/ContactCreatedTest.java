@@ -17,8 +17,7 @@ public class ContactCreatedTest extends TestBase {
                 "30", "January", "1990",
                 "homepage",
                 "[none]",
-                "addressSecondary", "homeSecondary", "notesSecondary"),
-                true);
+                "addressSecondary", "homeSecondary", "notesSecondary"),true);
         app.getContactHelper().fillDownloadJpg();
         app.getContactHelper().submitContactCreated();
         app.getContactHelper().returnToHomePage();

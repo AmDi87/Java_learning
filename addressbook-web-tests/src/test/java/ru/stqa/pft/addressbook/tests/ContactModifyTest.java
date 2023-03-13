@@ -15,8 +15,7 @@ public class ContactModifyTest extends TestBase {
                             "30", "January", "1990",
                             "homepage",
                             "[none]",
-                            "addressSecondary", "homeSecondary", "notesSecondary"),
-                    true);
+                            "addressSecondary", "homeSecondary", "notesSecondary"));
         }
             app.getContactHelper().editContact();
             app.getContactHelper().fillInfoContact(new ContactData(

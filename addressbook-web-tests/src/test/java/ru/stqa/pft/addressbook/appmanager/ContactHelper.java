@@ -91,11 +91,15 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void createContact(ContactData contact, boolean creation) {
+    public void createContact(ContactData contact) {
         gotoContactNew();
-        fillInfoContact(contact,creation);
+        fillInfoContact(contact, true);
         fillDownloadJpg();
         submitContactCreated();
         returnToHomePage();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.xpath("//td/input"));
     }
 }

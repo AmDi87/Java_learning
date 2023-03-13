@@ -17,8 +17,7 @@ public class ContactDeletedTest extends TestBase {
                             "30", "January", "1990",
                             "homepage",
                             "[none]",
-                            "addressSecondary", "homeSecondary", "notesSecondary"),
-                    true);
+                            "addressSecondary", "homeSecondary", "notesSecondary"));
         }
             app.getContactHelper().selectContact();
             app.getContactHelper().submitDeleted();
