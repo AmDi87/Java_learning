@@ -21,7 +21,7 @@ public class ContactDeletedTest extends TestBase {
                             "addressSecondary", "homeSecondary", "notesSecondary"));
         }
             int before = app.getContactHelper().getContactCount();
-            app.getContactHelper().selectContact();
+            app.getContactHelper().selectContact(before - 1);
             app.getContactHelper().submitDeleted();
             app.getContactHelper().okAlert();
             app.getNavigationHelper().gotoHomePage();

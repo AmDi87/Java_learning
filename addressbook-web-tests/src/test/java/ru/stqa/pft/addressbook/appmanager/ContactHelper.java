@@ -67,15 +67,15 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("home page"));
     }
 
-    public void editContact() {
-        click(By.xpath("//img[@alt='Edit']"));
+    public void editContact(int index) {
+        wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
     public void updateContact(){
         click(By.xpath("//input[@name='update']"));
     }
 
-    public void selectContact() {
-        click(By.xpath("//td/input"));
+    public void selectContact(int index1) {
+        wd.findElements(By.xpath("//td/input")).get(index1).click();
     }
 
     public void submitDeleted() {

@@ -19,7 +19,7 @@ public class ContactModifyTest extends TestBase {
                             "[none]",
                             "addressSecondary", "homeSecondary", "notesSecondary"));
         }
-            app.getContactHelper().editContact();
+            app.getContactHelper().editContact(before - 1);
             app.getContactHelper().fillInfoContact(new ContactData(
                     "John Modify", "Vlad Modify", "Doe Modify", "Nick Modify",
                     "title", "Company", "address",
