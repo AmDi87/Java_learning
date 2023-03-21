@@ -2,6 +2,8 @@ package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
 
+    private final String id;
+
     private static String group;
     private final String firstName;
     private final String middleName;
@@ -46,6 +48,8 @@ public class ContactData {
                        String group,
                        String address2, String phone2, String notes) {
 
+        this.id = null;
+
         this.firstName = firstName;
         this.middleName = middleName;
         this.lastName = lastName;
@@ -79,6 +83,84 @@ public class ContactData {
         this.address2 = address2;
         this.phone2 = phone2;
         this.notes = notes;
+    }
+    public ContactData(String id, String firstName, String middleName, String lastName, String nickName,
+                       String title, String company, String address,
+                       String homeTelephone, String mobileTelephone, String workTelephone, String faxTelephone,
+                       String email1, String email2, String email3,
+                       String bday, String bmonth, String byear, String aday, String amonth, String ayear,
+                       String homepage,
+                       String group,
+                       String address2, String phone2, String notes) {
+
+        this.id = id;
+
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.nickName = nickName;
+
+        this.title = title;
+        this.company = company;
+        this.address = address;
+
+        this.homeTelephone = homeTelephone;
+        this.mobileTelephone = mobileTelephone;
+        this.workTelephone = workTelephone;
+        this.faxTelephone = faxTelephone;
+
+        this.email1 = email1;
+        this.email2 = email2;
+        this.email3 = email3;
+
+        this.homepage = homepage;
+
+        this.group = group;
+
+        this.aday = aday;
+        this.amonth = amonth;
+        this.ayear = ayear;
+
+        this.bday = bday;
+        this.bmonth = bmonth;
+        this.byear = byear;
+
+        this.address2 = address2;
+        this.phone2 = phone2;
+        this.notes = notes;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContactData that = (ContactData) o;
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
+        return lastName != null ? lastName.equals(that.lastName) : that.lastName == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                '}';
     }
 
     public String getFirstName() {
@@ -168,33 +250,5 @@ public class ContactData {
         return group;
     }
 
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                ", lastName='" + lastName + '\'' +
-                "firstName='" + firstName + '\'' +
-                ", address='" + address + '\'' +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ContactData that = (ContactData) o;
-
-        if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
-        if (lastName != null ? !lastName.equals(that.lastName) : that.lastName != null) return false;
-        return address != null ? address.equals(that.address) : that.address == null;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0;
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (address != null ? address.hashCode() : 0);
-        return result;
-    }
 }
 

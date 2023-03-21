@@ -3,7 +3,9 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class ContactModifyTest extends TestBase {
@@ -22,8 +24,8 @@ public class ContactModifyTest extends TestBase {
                             "addressSecondary", "homeSecondary", "notesSecondary"));
         }
             app.getContactHelper().editContact(before.size() - 1);
-            app.getContactHelper().fillInfoContact(new ContactData(
-                    "John Modify", "Vlad Modify", "Doe Modify", "Nick Modify",
+
+            ContactData contact = new ContactData(before.get(before.size() - 1).getId(),"John Modify", "Vlad Modify", "Doe Modify", "Nick Modify",
                     "title", "Company", "address",
                     "890020006009", "880020006008", "870020006007", "860020006006",
                     "1email1.test@mail.ru", "2email2@mail.ru", "3email3@mail.ru",
@@ -31,11 +33,17 @@ public class ContactModifyTest extends TestBase {
                     "30", "January", "1991",
                     "homepage1",
                     null,
-                    "addressSecondary1", "homeSecondary1", "notesSecondary1"), false);
+                    "addressSecondary1", "homeSecondary1", "notesSecondary1");
+            app.getContactHelper().fillInfoContact(contact, false);
             app.getContactHelper().updateContact();
             app.getContactHelper().returnToHomePage();
             List<ContactData> after = app.getContactHelper().getContactList();
             Assert.assertEquals(after.size(), before.size());
+
+            before.remove(before.size() - 1);
+            before.add(contact);
+            Assert.assertEquals(new HashSet<Object>(before),new HashSet<Object>(after));
+
             app.getSessionHelper().logoutAccount();
     }
 }

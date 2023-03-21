@@ -115,12 +115,16 @@ public class ContactHelper extends HelperBase {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
-            String lastName = element.getText();
-            String firstName = element.getText();
-            String address = element.getText();
-            ContactData contact = new ContactData(firstName,
+            var a =  element.findElements(By.cssSelector("td"));
+            var checkbox  = a.get(0).findElement(By.cssSelector("input"));
+            var b =  checkbox.getAttribute("value");
+            String lastName = a.get(1).getText();
+            String firstName = a.get(2).getText();
+
+            String id = element.findElement(By.tagName("input")).getAttribute("value");
+            ContactData contact = new ContactData(id, firstName,
                     null, lastName, null,
-                    null, null, address,
+                    null, null, null,
                     null, null,
                     null, null,
                     null, null, null,

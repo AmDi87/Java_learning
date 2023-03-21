@@ -32,8 +32,6 @@ public class ContactDeletedTest extends TestBase {
 
             before.remove(before.size() - 1);
                 Assert.assertEquals(after, before);
-        System.out.println(after);
-        System.out.println(before);
 
             app.getSessionHelper().logoutAccount();
     }
