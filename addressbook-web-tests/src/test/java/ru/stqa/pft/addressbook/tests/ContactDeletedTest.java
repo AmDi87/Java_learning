@@ -3,8 +3,6 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
-
 import java.util.List;
 
 public class ContactDeletedTest extends TestBase {
@@ -23,15 +21,17 @@ public class ContactDeletedTest extends TestBase {
                             "addressSecondary", "homeSecondary", "notesSecondary"));
         }
             List<ContactData> before = app.getContactHelper().getContactList();
+
             app.getContactHelper().selectContact(before.size() - 1);
             app.getContactHelper().submitDeleted();
             app.getContactHelper().okAlert();
             app.getNavigationHelper().gotoHomePage();
+
             List<ContactData> after = app.getContactHelper().getContactList();
             Assert.assertEquals(after.size(), before.size() - 1);
 
             before.remove(before.size() - 1);
-                Assert.assertEquals(after, before);
+            Assert.assertEquals(after, before);
 
             app.getSessionHelper().logoutAccount();
     }
