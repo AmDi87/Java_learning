@@ -2,7 +2,7 @@ package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.*;
+import ru.stqa.pft.addressbook.model.ContactData;
 import java.util.Comparator;
 import java.util.List;
 
@@ -40,6 +40,6 @@ public class ContactCreatedTest extends TestBase {
         Assert.assertEquals(before,after);
 
         app.getNavigationHelper().gotoHomePage();
-        app.getSessionHelper().logoutAccount();
+        /*app.getSessionHelper().logoutAccount();*/
     }
 }

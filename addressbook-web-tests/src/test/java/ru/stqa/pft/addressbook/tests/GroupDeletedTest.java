@@ -27,7 +27,7 @@ public class GroupDeletedTest extends TestBase {
         Assert.assertEquals(after, before);
 
         app.getNavigationHelper().gotoHomePage();
-        app.getSessionHelper().logoutAccount();
+        /*app.getSessionHelper().logoutAccount();*/
     }
 
 }

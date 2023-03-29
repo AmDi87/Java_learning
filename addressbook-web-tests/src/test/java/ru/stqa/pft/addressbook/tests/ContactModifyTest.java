@@ -48,6 +48,6 @@ public class ContactModifyTest extends TestBase {
             after.sort(byId);
             Assert.assertEquals(before,after);
 
-            app.getSessionHelper().logoutAccount();
+            /*app.getSessionHelper().logoutAccount();*/
     }
 }

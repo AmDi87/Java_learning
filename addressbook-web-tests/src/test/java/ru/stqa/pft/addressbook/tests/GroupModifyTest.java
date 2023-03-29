@@ -36,6 +36,6 @@ public class GroupModifyTest extends TestBase{
         Assert.assertEquals(before,after);
 
         app.getNavigationHelper().gotoHomePage();
-        app.getSessionHelper().logoutAccount();
+        /*app.getSessionHelper().logoutAccount();*/
     }
 }

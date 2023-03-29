@@ -33,7 +33,7 @@ public class GroupCreatedTest extends TestBase {
         Assert.assertEquals(before,after);
 
         app.getNavigationHelper().gotoHomePage();
-        app.getSessionHelper().logoutAccount();
+        /*app.getSessionHelper().logoutAccount();*/
     }
 
 }

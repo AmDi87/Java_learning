@@ -33,6 +33,6 @@ public class ContactDeletedTest extends TestBase {
             before.remove(before.size() - 1);
             Assert.assertEquals(after, before);
 
-            app.getSessionHelper().logoutAccount();
+            /*app.getSessionHelper().logoutAccount();*/
     }
 }
