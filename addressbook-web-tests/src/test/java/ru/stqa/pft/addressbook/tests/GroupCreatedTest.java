@@ -10,29 +10,19 @@ public class GroupCreatedTest extends TestBase {
 
     @Test
     public void testGroupCreated() throws Exception  {
-        app.getNavigationHelper().gotoGroupPage();
-
-        List<GroupData> before = app.getGroupHelper().getGroupList();
-
-        app.getGroupHelper().initGroupCreated();
-
+        app.goTo().groupPage();
+        List<GroupData> before = app.group().list();
         GroupData group = new GroupData ("Test1", null, "test f");
-
-        app.getGroupHelper().fillGroupForm(group);
-        app.getGroupHelper().submitGroupCreated();
-        app.getGroupHelper().returnToGroupPage();
-
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        app.group().create(group);
+        List<GroupData> after = app.group().list();
         Assert.assertEquals(after.size(), before.size() +  1);
 
         before.add(group);
-
         Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
         before.sort(byId);
         after.sort(byId);
         Assert.assertEquals(before,after);
-
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
     }
 
 }

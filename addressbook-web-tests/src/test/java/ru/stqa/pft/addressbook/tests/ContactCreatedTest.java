@@ -10,10 +10,7 @@ public class ContactCreatedTest extends TestBase {
 
     @Test
     public void testContactCreated() throws Exception {
-        List<ContactData> before = app.getContactHelper().getContactList();
-
-        app.getNavigationHelper().gotoContactNew();
-
+        List<ContactData> before = app.contact().list();
         ContactData contact = new ContactData (
                 "John", "Vlad", "Doe", "Nick",
                 "title", "Company", "address",
@@ -24,13 +21,8 @@ public class ContactCreatedTest extends TestBase {
                 "homepage",
                 "[none]",
                 "addressSecondary", "homeSecondary", "notesSecondary");
-
-        app.getContactHelper().fillInfoContact(contact,true);
-        app.getContactHelper().fillDownloadJpg();
-        app.getContactHelper().submitContactCreated();
-        app.getContactHelper().returnToHomePage();
-
-        List<ContactData> after = app.getContactHelper().getContactList();
+        app.contact().create(contact);
+        List<ContactData> after = app.contact().list();
         Assert.assertEquals(after.size(), before.size() +  1);
 
         before.add(contact);
@@ -39,6 +31,6 @@ public class ContactCreatedTest extends TestBase {
         after.sort(byId);
         Assert.assertEquals(before,after);
 
-        app.getNavigationHelper().gotoHomePage();
+        app.goTo().gotoHomePage();
     }
 }

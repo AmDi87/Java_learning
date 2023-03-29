@@ -95,7 +95,7 @@ public class ContactHelper extends HelperBase {
         click(By.linkText("add new"));
     }
 
-    public void createContact(ContactData contact) {
+    public void create(ContactData contact) {
         gotoContactNew();
         fillInfoContact(contact, true);
         fillDownloadJpg();
@@ -103,11 +103,17 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void modifyContact(int index, ContactData contact) {
+    public void modify(int index, ContactData contact) {
         editContact(index);
         fillInfoContact(contact, false);
         updateContact();
         returnToHomePage();
+    }
+
+    public void deleted(int index) {
+        selectContact(index);
+        submitDeleted();
+        okAlert();
     }
 
     public boolean isThereAContact() {
@@ -118,7 +124,7 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.xpath("//td/input")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
