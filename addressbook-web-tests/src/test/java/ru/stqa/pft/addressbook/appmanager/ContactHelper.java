@@ -103,6 +103,13 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
+    public void modifyContact(int index, ContactData contact) {
+        editContact(index);
+        fillInfoContact(contact, false);
+        updateContact();
+        returnToHomePage();
+    }
+
     public boolean isThereAContact() {
         return isElementPresent(By.xpath("//td/input"));
     }

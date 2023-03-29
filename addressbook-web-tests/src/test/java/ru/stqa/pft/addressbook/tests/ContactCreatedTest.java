@@ -40,6 +40,5 @@ public class ContactCreatedTest extends TestBase {
         Assert.assertEquals(before,after);
 
         app.getNavigationHelper().gotoHomePage();
-        /*app.getSessionHelper().logoutAccount();*/
     }
 }
