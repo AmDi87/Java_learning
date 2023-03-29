@@ -8,7 +8,9 @@ import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -74,12 +76,20 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.xpath("//img[@alt='Edit']")).get(index).click();
     }
 
+    public void editContactById(int id) {
+       wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']",id))).click();
+    }
+
     public void updateContact() {
         click(By.xpath("//input[@name='update']"));
     }
 
     public void selectContact(int index1) {
         wd.findElements(By.xpath("//td/input")).get(index1).click();
+    }
+
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void submitDeleted() {
@@ -103,15 +113,15 @@ public class ContactHelper extends HelperBase {
         returnToHomePage();
     }
 
-    public void modify(int index, ContactData contact) {
-        editContact(index);
+    public void modify(ContactData contact) {
+        editContactById(contact.getId());
         fillInfoContact(contact, false);
         updateContact();
         returnToHomePage();
     }
 
-    public void deleted(int index) {
-        selectContact(index);
+    public void deleted(ContactData contact) {
+        selectContactById(contact.getId());
         submitDeleted();
         okAlert();
     }
@@ -126,6 +136,22 @@ public class ContactHelper extends HelperBase {
 
     public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<ContactData>();
+        List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+        for (WebElement element : elements) {
+            var a =  element.findElements(By.cssSelector("td"));
+            var checkbox  = a.get(0).findElement(By.cssSelector("input"));
+            var b =  checkbox.getAttribute("value");
+            String lastName = a.get(1).getText();
+            String firstName = a.get(2).getText();
+
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+        }
+        return contacts;
+    }
+
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             var a =  element.findElements(By.cssSelector("td"));
