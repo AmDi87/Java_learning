@@ -7,6 +7,7 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -111,6 +112,7 @@ public class ContactHelper extends HelperBase {
         fillInfoContact(contact, true);
         fillDownloadJpg();
         submitContactCreated();
+        contactCache = null;
         returnToHomePage();
     }
 
@@ -118,12 +120,14 @@ public class ContactHelper extends HelperBase {
         editContactById(contact.getId());
         fillInfoContact(contact, false);
         updateContact();
+        contactCache = null;
         returnToHomePage();
     }
 
     public void deleted(ContactData contact) {
         selectContactById(contact.getId());
         submitDeleted();
+        contactCache = null;
         okAlert();
     }
 
@@ -151,8 +155,14 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
+    private Contacts contactCache = null;
+
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        if (contactCache != null){
+            return new Contacts(contactCache);
+        }
+
+        contactCache = new Contacts();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
         for (WebElement element : elements) {
             var a =  element.findElements(By.cssSelector("td"));
@@ -162,8 +172,8 @@ public class ContactHelper extends HelperBase {
             String firstName = a.get(2).getText();
 
             int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
-            contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
+            contactCache.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 }
